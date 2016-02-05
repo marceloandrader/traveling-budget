@@ -1,0 +1,13 @@
+{{outlet}}
+
+<form action="">
+  {{#x-select value=model.category}}
+    {{#each categories as |c| }}
+    {{#x-option value=c}}{{c}}{{/x-option}}
+    {{/each}}
+  {{/x-select}}
+  {{input type="number" value=model.value}}
+  {{input type="text" value=model.description}}
+  {{model.createdOn}}
+  <input type="submit" value="Guardar" {{action 'save'}}>
+</form>

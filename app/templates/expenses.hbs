@@ -1,0 +1,10 @@
+<h1>Expenses</h1>
+<ul>
+  {{#each model.expenses as |exp|}}
+  <li>
+    {{exp.valor}} USD -  {{exp.category}}
+  </li>
+  {{/each}}
+</ul>
+
+{{outlet}}
