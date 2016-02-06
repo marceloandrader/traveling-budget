@@ -1,11 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model: function() {
-    return this.store.createRecord('expense', {
-      category: 'Comida',
-      createdOn: new Date()
-    });
+  model: function(params) {
+    return this.store.findRecord('expense', params.id);
   },
   actions: {
     save: function() {

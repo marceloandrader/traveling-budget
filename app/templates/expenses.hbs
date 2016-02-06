@@ -1,10 +1,28 @@
 <h1>Expenses</h1>
+
+{{outlet}}
+<hr>
+{{#link-to 'expenses.new'}}New expense{{/link-to}}
+
 <ul>
-  {{#each model.expenses as |exp|}}
+  {{#each expenses as |category|}}
   <li>
-    {{exp.valor}} USD -  {{exp.category}}
+    <strong>{{category.value}}</strong>
+
+    <ul>
+    {{#each category.items as |exp|}}
+      <li>
+        {{exp.value}} USD <em style="font-size: 0.8em">{{exp.description}}</em>
+        {{link-to 'Editar' 'expenses.edit' exp}}
+        <a href="#" {{action 'remove' exp}}>Eliminar</a>
+        <br>
+        <span class="small">{{exp.createdOn}}</span>
+      </li>
+    {{/each}}
+    <li>Total: {{total-expenses category.items}}</li>
+    </ul>
+
   </li>
   {{/each}}
 </ul>
 
-{{outlet}}
