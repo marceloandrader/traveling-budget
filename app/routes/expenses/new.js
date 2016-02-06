@@ -8,6 +8,12 @@ export default Ember.Route.extend({
     });
   },
   actions: {
+    cancel: function() {
+      var self = this;
+      this.controller.get('model').destroyRecord().then(function() {
+        self.transitionTo('expenses');
+      });
+    },
     save: function() {
       var self = this;
       this.controller.get('model').save().then(function() {

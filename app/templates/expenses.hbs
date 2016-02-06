@@ -3,6 +3,7 @@
 {{outlet}}
 <hr>
 {{#link-to 'expenses.new'}}New expense{{/link-to}}
+<a href="#" {{action 'refresh'}}>Refrescar</a>
 
 <ul>
   {{#each expenses as |category|}}
@@ -10,6 +11,8 @@
     <strong>{{category.value}}</strong>
 
     <ul>
+      <li style="font-weight: bold;">Total: {{total-expenses category.items}}</li>
+      <li style="font-weight: bold;">Budget: {{budget-for category.value categories}}</li>
     {{#each category.items as |exp|}}
       <li>
         {{exp.value}} USD <em style="font-size: 0.8em">{{exp.description}}</em>
@@ -19,7 +22,6 @@
         <span class="small">{{exp.createdOn}}</span>
       </li>
     {{/each}}
-    <li>Total: {{total-expenses category.items}}</li>
     </ul>
 
   </li>
